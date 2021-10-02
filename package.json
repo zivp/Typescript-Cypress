@@ -1,23 +1,22 @@
 {
-  "name": "typescriptautomation",
+  "name": "cls",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "cypress:open": "cypress open"
-  },
-  "author": "Ziv Fahima",
-  "license": "ISC",
   "directories": {
     "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zivp/typescriptAutomation-.git"
   },
+  "author": "ziv fahima",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/zivp/typescriptAutomation-/issues"
   },
-  "homepage": "https://github.com/zivp/typescriptAutomation-#readme",
-  "description": ""
+  "homepage": "https://github.com/zivp/typescriptAutomation-#readme"
 }
