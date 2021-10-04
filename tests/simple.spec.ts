@@ -1,6 +1,10 @@
 /// <reference types="cypress" />
 
 
+beforeEach(() => {
+    cy.log('I run before every test in every spec file!!!!!!');
+  })
+
 describe('Navigate to Google Test', function () {
     it('Visits in google', function () {
         cy.visit('https://www.google.com');
