@@ -1,15 +1,7 @@
 /// <reference types="cypress" />
+import LoginPage from '../pages/login-page';
 
 
-beforeEach(() => {
-    cy.log('I run before every test in every spec file!!!!!!');
-  })
-
-describe('Navigate to Google Test', function () {
-    it('Visits in google', function () {
-        cy.visit('https://www.google.com');
-    });
-});
 
 
 describe("A suite is just a function", function() {
@@ -20,40 +12,17 @@ describe("A suite is just a function", function() {
     });
   });
 
-  describe('Verify Browser Stack Home Page', () => {
+  
+  
+describe("Login Test example", ()=> { 
+   it("enter saucedemo with standard_user", ()=> {
+    const lp=new LoginPage();
+    lp.visitUrl("https://www.saucedemo.com/");
+    lp.fillFirstName("standard_user","#user-name");
+    lp.fillPaswword("secret_sauce","#password");
+    lp.submit("#login-button");
+   // cy.title().should('be.equal','Zero - Log in')
+   });
+ });
 
-    it('Verify Browserstack logo is visible', () => {
-
-        cy.visit('https://www.browserstack.com/');
-
-        cy.get('#logo').should('be.visible');
-
-    })
-
-    it('Verify Header is present', () => {
-
-        cy.get('h1').first().should('be.exist');
-
-    })
-
-    it('Verify Product menu are present', () => {
-
-        cy.get('#product-menu-toggle').first().should('be.exist');
-
-        cy.get('#developers-menu-toggle').first().should('be.exist');
-
-        cy.get('#developers-menu-toggle').first().should('be.exist');
-
-    })
-
-    it('Verify menu Links are  present', () => {
-
-        cy.get("a[title='Pricing']").first().should('be.exist');
-
-        cy.get("a[title='Sign In']").first().should('be.exist');
-
-        cy.get("a[title='Live for Teams']").first().should('be.exist');
-
-    })
-
-});
+ 
