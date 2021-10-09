@@ -21,8 +21,10 @@ describe("Login Test example", ()=> {
     lp.fillFirstName("standard_user","#user-name");
     lp.fillPaswword("secret_sauce","#password");
     lp.submit("#login-button");
-   // cy.title().should('be.equal','Zero - Log in')
-   });
+   })
+   it("verify url", ()=> {
+    cy.url().should('eq', 'https://www.saucedemo.com/inventory.html')
+   })
  });
 
  
