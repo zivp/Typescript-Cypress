@@ -1,28 +1,19 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var initialTest = /** @class */ (function () {
-    function initialTest(url, textValue, locator, buttonText) {
+    function initialTest(url, textValue, locator, button) {
         this.url = url;
         this.textValue = textValue;
         this.locator = locator;
-        this.buttonText = buttonText;
+        this.button = button;
     }
     initialTest.prototype.visit = function (url) { return cy.visit(url); };
     initialTest.prototype.fillText = function (textValue, locator) {
-        var field = cy.get(locator);
-        field.clear();
-        field.type(textValue);
+        locator.clear();
+        locator.type(textValue);
         return this;
     };
-    initialTest.prototype.submit = function (locator, buttonText) {
-        if (typeof buttonText === "string") {
-            var button = cy.contains(buttonText);
-            button.click();
-        }
-        else {
-            var button = cy.get(locator).click();
-        }
-    };
+    initialTest.prototype.submit = function (locator) { locator.click(); };
     return initialTest;
 }());
 exports.default = initialTest;

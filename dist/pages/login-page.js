@@ -21,17 +21,24 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var initialTest_1 = __importDefault(require("../utils/initialTest"));
 var LoginPage = /** @class */ (function (_super) {
     __extends(LoginPage, _super);
-    function LoginPage(url, textValue, locator) {
-        return _super.call(this, url, textValue, locator) || this;
+    function LoginPage() {
+        var _this = _super.call(this) || this;
+        //declare locators of login page 
+        _this.UserName = function () { return cy.get("#user-name"); };
+        _this.PasswordUser = function () { return cy.get("#password"); };
+        _this.SubmitButton = function () { return cy.get("#login-button"); };
+        _this.getItemsLength = function () { return cy.get("#inventory_container>div>div.inventory_item").its('length'); };
+        return _this;
     }
+    //pom functions
     LoginPage.prototype.visitUrl = function (url) { return this.visit(url); };
-    LoginPage.prototype.fillFirstName = function (name, locator) {
-        return this.fillText(name, locator);
-    };
-    LoginPage.prototype.fillPaswword = function (name, locator) {
-        return this.fillText(name, locator);
-    };
-    LoginPage.prototype.submitLogin = function (buttonText) { return this.submit(buttonText); };
+    ;
+    LoginPage.prototype.fillFirstName = function (name) { return this.fillText(name, this.UserName()); };
+    ;
+    LoginPage.prototype.fillPaswword = function (password) { return this.fillText(password, this.PasswordUser()); };
+    ;
+    LoginPage.prototype.submitLogin = function () { return this.submit(this.SubmitButton()); };
+    ;
     return LoginPage;
 }(initialTest_1.default));
 exports.default = LoginPage;

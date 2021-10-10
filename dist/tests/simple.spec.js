@@ -13,14 +13,18 @@ describe("A suite is just a function", function () {
     });
 });
 describe("Login Test example", function () {
+    var lp = new login_page_1.default();
     it("enter saucedemo with standard_user", function () {
-        var lp = new login_page_1.default();
         lp.visitUrl("https://www.saucedemo.com/");
-        lp.fillFirstName("standard_user", "#user-name");
-        lp.fillPaswword("secret_sauce", "#password");
-        lp.submit("#login-button");
+        lp.fillFirstName("standard_user");
+        lp.fillPaswword("secret_sauce");
+        lp.submitLogin();
     });
     it("verify url", function () {
         cy.url().should('eq', 'https://www.saucedemo.com/inventory.html');
+    });
+    it("verify 6 items", function () {
+        var sumProdact = 6;
+        lp.getItemsLength().should('eq', sumProdact);
     });
 });

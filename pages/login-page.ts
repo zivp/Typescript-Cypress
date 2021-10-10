@@ -2,19 +2,26 @@ import initialTest from '../utils/initialTest';
 
 class LoginPage extends initialTest{
 
-public constructor(url?:string, textValue?:string, locator?:string) {
-  super(url,textValue,locator);
-}
 
-public visitUrl(url: string){return this.visit(url)}
-
-public fillFirstName (name: string,locator: string){
-return this.fillText(name,locator)}
-
-public fillPaswword(name: string,locator: string){
-return this.fillText(name,locator)}
+   constructor() {
+    super();
+  }
   
-public submitLogin(buttonText : string){return this.submit(buttonText)}
+//declare locators of login page 
+  UserName     = () => cy.get("#user-name");
+  PasswordUser = () => cy.get("#password");
+  SubmitButton = () => cy.get("#login-button");
+  getItemsLength=() => cy.get("#inventory_container>div>div.inventory_item").its('length');
+    
+//pom functions
+public visitUrl(url:string){return this.visit(url);};
+
+public fillFirstName (name: string){return this.fillText(name,this.UserName());};
+
+public fillPaswword(password: string){return this.fillText(password,this.PasswordUser())};
+  
+public submitLogin(){return this.submit(this.SubmitButton())};
+
 }
 
 export default LoginPage
